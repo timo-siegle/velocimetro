@@ -8,6 +8,15 @@ enum Velocidades: Int {
     init(velocidadInicial : Velocidades) {
         self = velocidadInicial
     }
+    
+    var descripción : String {
+        switch self {
+            case Apagado: return "Apagado";
+            case VelocidadBaja: return "Velocidad Baja";
+            case VelocidadMedia: return "Velocidad Media";
+            case VelocidadAlta: return "Velocidad Alta";
+        }
+    }
 }
 
 class Auto {
@@ -19,22 +28,18 @@ class Auto {
     
     func cambioDeVelocidad() ->  (actual : Int, velocidadEnCadena: String) {
         
-        var velocidadEnCadena: String
+        let actualVelocidad = velocidad
         switch velocidad {
             case Velocidades.Apagado:
                 velocidad = Velocidades.VelocidadBaja
-                velocidadEnCadena = "Velocidad Baja"
-            case Velocidades.VelocidadBaja:
+        case Velocidades.VelocidadBaja:
                 velocidad = Velocidades.VelocidadMedia
-                velocidadEnCadena = "Velocidad Media"
             case Velocidades.VelocidadMedia:
                 velocidad = Velocidades.VelocidadAlta
-                velocidadEnCadena = "Velocidad Alta"
             case Velocidades.VelocidadAlta:
                 velocidad = Velocidades.VelocidadMedia
-                velocidadEnCadena = "Velocidad Media"
         }
-        return (velocidad.rawValue, velocidadEnCadena)
+        return (actualVelocidad.rawValue, actualVelocidad.descripción)
     }
 }
 
