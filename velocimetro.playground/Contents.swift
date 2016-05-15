@@ -30,13 +30,13 @@ class Auto {
         
         let actualVelocidad = velocidad
         switch velocidad {
-            case Velocidades.Apagado:
+            case .Apagado:
                 velocidad = Velocidades.VelocidadBaja
-        case Velocidades.VelocidadBaja:
+            case .VelocidadBaja:
                 velocidad = Velocidades.VelocidadMedia
-            case Velocidades.VelocidadMedia:
+            case .VelocidadMedia:
                 velocidad = Velocidades.VelocidadAlta
-            case Velocidades.VelocidadAlta:
+            case .VelocidadAlta:
                 velocidad = Velocidades.VelocidadMedia
         }
         return (actualVelocidad.rawValue, actualVelocidad.descripción)
@@ -46,5 +46,5 @@ class Auto {
 var auto = Auto()
 for index in 1...20 {
     let result = auto.cambioDeVelocidad()
-        print("\(result.actual), \(result.velocidadEnCadena)")
+    print("\(result.actual), \(result.velocidadEnCadena)")
 }
